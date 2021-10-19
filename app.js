@@ -12,6 +12,7 @@ const scoreEl0 = document.getElementById('score--0');
 scoreEl1.innerHTML = 0;
 scoreEl0.innerHTML = 0;
 dice.classList.add('hidden');
+let newScore = 0;
 
 
 //roll btn functionality
@@ -23,7 +24,10 @@ btnRoll.addEventListener('click', function () {
     dice.classList.remove('hidden');
     dice.src = `dice-${diceRoll}.png`;
 
-    if (!diceRoll == 1) {
-        
+    if (diceRoll !== 1) {
+        newScore = newScore + diceRoll;
+        currentScoreEl0.innerHTML = newScore
     }
+
+    
 })
