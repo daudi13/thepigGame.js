@@ -40,7 +40,11 @@ btnRoll.addEventListener('click', function () {
         playerSwitch();
 
     }
+
+    
 })
+
+
 
 //hold button functionality
 
@@ -50,24 +54,30 @@ btnHold.addEventListener('click', function () {
 
     scores[activePlayer] += theScore;
     document.getElementById(`current--${activePlayer}`).innerHTML = 0;
-    playerSwitch();
+    
 
     // 2. check if player's score is >=100 finish the game
 
-    
-    if (document.getElementById(`score--${activePlayer}`).innerHTML >= 100) {
-        document.getElementById(`score--${activePlayer}`).innerHTML = `WINNER!!`;
+    if (scores[activePlayer] >= 100) {
+        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+        document.getElementById(`score--${activePlayer}`).innerHTML = 100;
+        btnRoll.disabled = true;
+        btnHold.disabled = true;
+        dice.classList.add('hidden')
+    } else {
+        playerSwitch()
     }
-
+    
     //3. if not switch to the next player
 });
 
 
+
+
 //4. new game button functionality;
 
-btnNew.addEventListener('click', function () {
-    reset();
-})
+
 
 function playerSwitch() {
     document.getElementById(`score--${activePlayer}`).innerHTML = scores[activePlayer];
@@ -77,20 +87,4 @@ function playerSwitch() {
     theScore = 0;
 }
 
-function reset() {
 
-    if (player0El.classList.contains('player--active')) {
-        player0El.classList.remove('player--active');
-    } else {
-        player1El.classList.add('player--active');
-    }
-
-    currentScoreEl0.textContent = 0;
-    currentScoreEl01.textContent = 0;
-    scoreEl0.innerHTML = 0;
-    scoreEl1.innerHTML = 0;
-    dice.classList.add('hidden');
-    theScore = 0;
-    scores[0] = 0;
-    scores[1] = 0;
-}
