@@ -29,7 +29,12 @@ btnRoll.addEventListener('click', function () {
     if (diceRoll !== 1) {
         theScore = theScore + diceRoll;
         document.getElementById(`current--${activePlayer}`).innerHTML = theScore;
+
     } else {
+        document.getElementById(`current--${activePlayer}`).innerHTML = 0;
+        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
         activePlayer = activePlayer === 1 ? 0 : 1;
+        theScore = 0;
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--active');
     }
 })
