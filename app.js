@@ -9,25 +9,27 @@ const scoreEl0 = document.getElementById('score--0');
 
 //resetting everything to default
 
-scoreEl1.innerHTML = 0;
 scoreEl0.innerHTML = 0;
+scoreEl1.innerHTML = 0;
 dice.classList.add('hidden');
-let newScore = 0;
+
+const scores = new Array(0, 0);
+let theScore = 0
+let activePlayer = 0;
+
 
 
 //roll btn functionality
 
 btnRoll.addEventListener('click', function () {
-    
     let diceRoll = Math.trunc(Math.random() * 6) + 1;
-
     dice.classList.remove('hidden');
     dice.src = `dice-${diceRoll}.png`;
 
     if (diceRoll !== 1) {
-        newScore = newScore + diceRoll;
-        currentScoreEl0.innerHTML = newScore
+        theScore = theScore + diceRoll;
+        document.getElementById(`current--${activePlayer}`).innerHTML = theScore;
+    } else {
+        activePlayer = activePlayer === 1 ? 0 : 1;
     }
-
-    
 })
