@@ -9,6 +9,7 @@ const scoreEl0 = document.getElementById('score--0');
 const btnHold = document.querySelector('.btn--hold');
 const player1El = document.querySelector('.player--1');
 const player0El = document.querySelector('.player--0');
+const btnNew = document.querySelector('.btn--new');
 
 //resetting everything to default
 
@@ -35,7 +36,9 @@ btnRoll.addEventListener('click', function () {
         document.getElementById(`current--${activePlayer}`).innerHTML = theScore;
 
     } else {
+        document.getElementById(`current--${activePlayer}`).innerHTML = 0;
         playerSwitch();
+
     }
 })
 
@@ -57,6 +60,13 @@ btnHold.addEventListener('click', function () {
     }
 
     //3. if not switch to the next player
+});
+
+
+//4. new game button functionality;
+
+btnNew.addEventListener('click', function () {
+    reset();
 })
 
 function playerSwitch() {
@@ -65,4 +75,14 @@ function playerSwitch() {
     activePlayer = activePlayer === 0 ? 1 : 0;
     document.querySelector(`.player--${activePlayer}`).classList.toggle('player--active');
     theScore = 0;
+}
+
+function reset() {
+    currentScoreEl0.textContent = 0;
+    currentScoreEl01.textContent = 0;
+    scoreEl0.innerHTML = 0;
+    scoreEl1.innerHTML = 0;
+    dice.classList.add('hidden');
+    player1El.classList.remove('player--active');
+    player0El.classList.add('player--active');
 }
