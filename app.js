@@ -46,8 +46,8 @@ btnHold.addEventListener('click', function () {
     //1. add current score to active player's score
 
     scores[activePlayer] += theScore;
+    document.getElementById(`current--${activePlayer}`).innerHTML = 0;
     playerSwitch();
-
 
     // 2. check if player's score is >=100 finish the game
 
