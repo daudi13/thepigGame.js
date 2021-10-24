@@ -92,6 +92,9 @@ btnNew.addEventListener('click', function () {
     player1El.classList.remove('player--winner');
     player0El.classList.remove('player--active');
     player1El.classList.add('player--active');
+
+    btnRoll.disabled = false;
+    btnHold.disabled = false;
 })
 
 
