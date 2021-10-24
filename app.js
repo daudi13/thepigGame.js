@@ -77,6 +77,23 @@ btnHold.addEventListener('click', function () {
 
 //4. new game button functionality;
 
+btnNew.addEventListener('click', function () {
+    scores[0] = 0;
+    scores[1] = 0;
+    theScore = 0;
+    activePlayer = 0;
+
+    currentScoreEl0.innerHTML = theScore;
+    currentScoreEl01.innerHTML = theScore;
+    scoreEl0.innerHTML = scores[0];
+    scoreEl1.innerHTML = scores[1];
+
+    player0El.classList.remove('player--winner');
+    player1El.classList.remove('player--winner');
+    player0El.classList.remove('player--active');
+    player1El.classList.add('player--active');
+})
+
 
 
 function playerSwitch() {
